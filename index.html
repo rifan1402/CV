@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            scroll-behavior: smooth;
+            transition: background-color 0.5s ease-in-out;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6e7dff 0%, #8d56ff 100%);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            transform: translateY(50%);
+            animation: slideDown 2s ease forwards;
+        }
+
+        @keyframes slideDown {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0;
+            text-transform: uppercase;
+            animation: fadeIn 2s ease forwards;
+            opacity: 0;
+            z-index: 2;
+            position: relative;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 20px auto;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transform: scale(0);
+            animation: popIn 1s ease forwards 1.5s;
+        }
+
+        @keyframes popIn {
+            to {
+                transform: scale(1);
+            }
+        }
+
+        nav {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .section {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 20px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .section:hover {
+            background-color: #fafafa;
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #444;
+            margin-top: 0;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            width: 50px;
+            height: 4px;
+            background-color: #007BFF;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        h2:hover::after {
+            width: 100%;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            position: relative;
+            padding-left: 20px;
+            transition: color 0.3s ease;
+        }
+
+        li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        li:hover {
+            color: #007BFF;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border-radius: 25px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .parallax {
+            background: url('https://online.stanford.edu/sites/default/files/inline-images/1600X900-How-does-blockchain-work.jpg') no-repeat center center/cover;
+            height: 300px;
+            margin: 0;
+            position: relative;
+            z-index: 0;
+            transform: translateY(0%);
+            animation: parallaxScroll 10s linear infinite;
+        }
+
+        @keyframes parallaxScroll {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 0 100%;
+            }
+        }
+
+        .skill-list {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .skill-header {
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .skill-header:hover {
+            background-color: #0056b3;
+        }
+
+        .skill-header:focus + .skill-list {
+            display: block;
+        }
+
+        .sertificate-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sertificate-list li {
+            margin: 5px 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .sertificate-header {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sertificate-header:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            margin-top: 20px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .profile-pic {
+                width: 120px;
+                height: 120px;
+            }
+        }
+        
+    </style>
+    <!-- Uncomment the following line if you are using Google Fonts and FontAwesome icons -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#profil">Profil</a></li>
+            <li><a href="#pendidikan">Pendidikan</a></li>
+            <li><a href="#skill">Skill</a></li>
+            <li><a href="#pengalaman">Pengalaman</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#sertifikat">Sertifikat & Webinar</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Rifanto</h1>
+        <img src="profil.JPG" alt="Foto Profil Rifanto Aji" class="profile-pic">
+    </header>
+
+    <div class="parallax"></div>
+
+    <section class="section" id="profil">
+        <h2>Profil</h2>
+        <ul>
+            <li>Saya Rifanto, dengan minat mendalam pada Logistik Manajemen, PPIC, Sistem Informasi, dan Blockchain. Saya sedang mendalami tentang integrasi antara Blockchain dan Supply Chain. Saya mempunyai kemampuan dalam mengatur waktu dengan efektif dan disiplin yang tinggi dalam setiap tugas. Dengan semangat untuk terus berkembang dan ketertarikan pada hal-hal baru, saya berkomitmen untuk menerapkan pengetahuan dan keterampilan saya untuk memberikan kontribusi positif dalam lingkungan profesional yang dinamis.</li>
+            <li><a href="https://drive.google.com/file/d/1KxPs1JPe1w36A2Epn0vFEXAWAa3pGbtQ/view?usp=drive_link">CV-Rifanto</a></li>
+            <li><a href="https://drive.google.com/file/d/1LGQ2nohxrdkvSqGlJcq1GN8HsjQAhVIO/view?usp=sharing">Transkrip Nilai</a></li>
+        </ul>
+    </section>
+
+    <section class="section" id="pendidikan">
+        <h2>Pendidikan</h2>
+        <ul>
+            <li>Politeknik APP Jakarta, Manajemen Logistik, -</li>
+            <li>SMK N 1 Kepil, Teknik Elektronika, 2022</li>
+        </ul>
+    </section>
+
+    <section class="section" id="skill">
+        <h2>Skill</h2>
+        <button class="skill-header">Lihat</button>
+        <ul class="skill-list">
+            <li><i class="icon fas fa-laptop-code"></i>Programming</li>
+            <li><i class="icon fas fa-briefcase"></i>Office</li>
+            <li><i class="icon fas fa-warehouse"></i>WMS</li>
+            <li><i class="icon fas fa-cogs"></i>Auto CAD</li>
+            <li><i class="icon fas fa-network-wired"></i>Blockchain</li>
+            <li><i class="icon fas fa-cube"></i>PEB/PIB</li>
+            <li><i class="icon fas fa-people-carry"></i>Manajemen</li>
+            <!-- Add more skills here -->
+        </ul>        
+    </section>
+
+    <section class="section" id="pengalaman">
+        <h2>Pengalaman</h2>
+        <ul>
+            <li>Teknisi, Madilaras Elektronik, 2021</li>
+        </ul>
+    </section>
+
+    <section class="section" id="projects">
+        <h2>Projects</h2>
+        <ul>
+            <li>Warehouse Management System Perum Bulog Sukabumi (PHP & MySQL)-(Kompetensi 4)</li>
+            <li>Design Layout Pos Indonesia Sukabumi (Auto CAD)-(Kompetisi 3)</li>
+            <li>Personal Website</li>
+        </ul>
+    </section>
+
+    <section class="section" id="sertifikat">
+        <h2>Sertifikat & Webinar</h2>
+        <button class="sertificate-header" onclick="toggleSertificateList()">Lihat</button>
+        <ul class="sertificate-list hidden">
+            <li><a href="https://drive.google.com/drive/folders/15PsLKfC5e4ASM3fYaATSn_8F8fuGr_nh?usp=drive_link" download class="btn">FILE</a></li>
+            <li><a href="https://drive.google.com/file/d/15hnu3YCuXNpaahdjG2uKffMRXXOGnmNP/view?usp=drive_link" download class="btn">6S</a></li>
+            <li><a href="https://drive.google.com/file/d/15U2EsJDgQBahe_Cyp3uH10Mx7csj8l3n/view?usp=drive_link" download class="btn">Line Balancing</a></li>
+            <li><a href="https://drive.google.com/file/d/16cA0Gjqh4MAdiJKnesrLUPTQgIeK6jsl/view?usp=drive_link" download class="btn">Comunication</a></li>
+            <li><a href="https://drive.google.com/file/d/19bdJR8PI0obFXhMv6tQgMDGF5iTPobm8/view?usp=drive_link" download class="btn">Strategi Bisnis Logistik Era Digital</a></li>
+        </ul>
+    </section>
+
+    <script>
+        function toggleSertificateList() {
+            const sertificateList = document.querySelector('.sertificate-list');
+            sertificateList.classList.toggle('hidden');
+        }
+    </script>
+
+    <section class="section" id="contact">
+        <h2>Contact</h2>
+        <ul>
+            <li><a href="mailto:rifantoaji0@gmail.com"><i class="icon fas fa-envelope"></i>Email</a></li>
+            <li><a href="https://wa.me/+6282325779052"><i class="icon fas fa-phone-alt"></i>WhatsApp</a></li>
+            <li><a href="https://www.linkedin.com/in/rifanto-15141a30a/"><i class="icon fab fa-linkedin"></i>LinkedIn</a></li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Rifanto</p>
+    </footer>
+
+    <!-- Optional JavaScript for FontAwesome Icons -->
+    <!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->
+</body>
+
+</html>
